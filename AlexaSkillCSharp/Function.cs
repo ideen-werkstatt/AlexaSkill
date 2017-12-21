@@ -96,7 +96,9 @@ namespace AlexaSkillCSharp
         {
             "private Krankenversicherungen",
             "pflegezusatzversicherungen",
+            "pflegezusatzversicherung",
             "zahnzusatzversicherungen",
+            "zahnzusatzversicherung",
             "krankenhaus zusatzversicherungen",
             "krankentagegeld",
             "auslandsreise und Krankenversicherungen",
@@ -147,9 +149,9 @@ namespace AlexaSkillCSharp
             messageRessource.AllgemeineInformationenAlteLeipziger = $"Allgemeine Informationen zur Alten Leipziger Lebensversicherung. {messageRessource.StopMessage}";
             messageRessource.AllgemeineInformationenHallesche = $"Allgemeine Informationen zur Halleschen Krankenversicherung. {messageRessource.StopMessage}";
             messageRessource.AllgemeineInformationenKonzern = $"Allgemeine Informationen zum Alten Leipziger Halleschen Konzern. {messageRessource.StopMessage}";
-            messageRessource.VersicherungsprodukteAlteLeipziger = "Die Alte Leipziger Lebensversicherung bietet beispielsweise Fondsrenten und Berufunfähigkeitsversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!";
-            messageRessource.VersicherungsprodukteHallesche = "Die Hallesche Krankenversicherung bietet beispielsweise private Krankenversicherungen und Pflegezusatzversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!?";
-            messageRessource.VersicherungsprodukteKonzern = "Der Alte Leipziger Hallesche Konzern bietet beispielsweise Fondsrenten, Berufunfähigkeitsversicherungen, private Krankenversicherung und Pflegezusatzversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!?";
+            messageRessource.VersicherungsprodukteAlteLeipziger = "Die Alte Leipziger Lebensversicherung bietet beispielsweise Fondsrenten und Berufsunfähigkeitsversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!";
+            messageRessource.VersicherungsprodukteHallesche = "Die Hallesche Krankenversicherung bietet beispielsweise zahnzusatzversicherungen und Pflegezusatzversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!?";
+            messageRessource.VersicherungsprodukteKonzern = "Der Alte Leipziger Hallesche Konzern bietet beispielsweise Fondsrenten, Berufsunfähigkeitsversicherungen, private Krankenversicherung und Pflegezusatzversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!?";
         }
 
         /// <summary>
@@ -916,7 +918,6 @@ namespace AlexaSkillCSharp
                 try
                 {
                     log.LogLine("Sending email using Amazon SES...");
-                    log.LogLine($"Else-Fall Inhalt: {sendRequest.Message.Body.Html}");
                     var response = client.SendEmailAsync(sendRequest);
                     response.Wait();
                     log.LogLine("The email was sent successfully.");
