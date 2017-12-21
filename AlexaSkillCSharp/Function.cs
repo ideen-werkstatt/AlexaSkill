@@ -30,7 +30,7 @@ namespace AlexaSkillCSharp
 
         // Replace recipient@example.com with a "To" address. If your account
         // is still in the sandbox, this address must be verified.
-        static readonly string receiverAddress = "stefanroehrig@gmx.de";
+        static readonly string receiverAddress = "kdmytrok@gmail.com";
 
         // The configuration set to use for this email. If you do not want to use a
         // configuration set, comment out the following property and the
@@ -43,18 +43,18 @@ namespace AlexaSkillCSharp
         // The email body for recipients with non-HTML email clients.
         static readonly string textBody = "";
 
-        // The HTML body of the email.<h1>Amazon SES Test (AWS SDK for .NET)</h1>
-        static string htmlBody = @"<html>
-                                        <head></head>
-                                        <body>
-                                          <p>Diese Email informiert Sie über
-                                           #Inhalt#
-                                           <br>Weitergehende Informationen bekommen Sie auf der Website des Konzerns:</br>
-                                          <br><a href='http://www.hallesche.de/'> Hallesche</a> </br>
-                                          <br><a href='http://www.alte-leipziger.de/'> Alte Leipziger</a> </br>  
-                                         </p>
-                                        </ body >
-                                        </ html > ";
+        //// The HTML body of the email.<h1>Amazon SES Test (AWS SDK for .NET)</h1>
+        //static string htmlBody = @"<html>
+        //                                <head></head>
+        //                                <body>
+        //                                  <p>Diese Email informiert Sie über
+        //                                   #Inhalt#
+        //                                   <br>Weitergehende Informationen bekommen Sie auf der Website des Konzerns:</br>
+        //                                  <br><a href='http://www.hallesche.de/'> Hallesche</a> </br>
+        //                                  <br><a href='http://www.alte-leipziger.de/'> Alte Leipziger</a> </br>  
+        //                                 </p>
+        //                                </ body >
+        //                                </ html > ";
 
         enum STATES
         {
@@ -287,7 +287,7 @@ namespace AlexaSkillCSharp
                                     kundennummer = intentRequest.Intent.Slots["Kundennummer"].Value;
                                     log.LogLine($"Kundennummer set to " + kundennummer);
                                     int knrCheck;
-                                    if(int.TryParse(kundennummer, out knrCheck))
+                                    if (int.TryParse(kundennummer, out knrCheck))
                                     {
                                         response = ResponseBuilder.Ask(new PlainTextOutputSpeech()
                                         {
@@ -310,7 +310,7 @@ namespace AlexaSkillCSharp
                                         response.Response.ShouldEndSession = false;
                                         this.attributes.Clear();
                                     }
-                                    
+
 
                                 }
                                 else
@@ -407,7 +407,7 @@ namespace AlexaSkillCSharp
                                     log.LogLine($"Telefonnummer set to " + telefonnummer);
 
                                     int tnrCheck;
-                                    if(int.TryParse(telefonnummer,out tnrCheck))
+                                    if (int.TryParse(telefonnummer, out tnrCheck))
                                     {
                                         response = ResponseBuilder.Ask(new PlainTextOutputSpeech()
                                         {
@@ -466,13 +466,13 @@ namespace AlexaSkillCSharp
                                 }
                                 else
                                 {
-                                    
+
                                     //Geht das auch mit Schleife und allen möglichen inhalten des Slot-Types? ausprobieren!
                                     switch ((STATES)lastIntent.Value)
                                     {
                                         //Prüfen, ob Gesellschaft vorhanden, bevor es befüllt wird, ansonsten nochmal nach Gesellschaft fragen.
                                         case STATES.GetAllgemeineInfosKonzern:
-                                            
+
                                             gesellschaft = intentRequest.Intent.Slots["Gesellschaft"].Value;
                                             log.LogLine($"GetAllgemeineInfosKonzern set to " + intentRequest.Intent.Slots["Gesellschaft"].Value);
 
@@ -538,10 +538,10 @@ namespace AlexaSkillCSharp
                                     //Prüfen ob es Versicherungsprodukt gibt, bevor es gefüllt wird, ansonsten nochmal nach Versicherungsprodukt fragen.
 
                                     //! intentRequest.Intent.Slots.ContainsKey("Versicherungsprodukt") 
-                                    if (    (!intentRequest.Intent.Slots.ContainsKey("Versicherungsprodukt"))
-                                        ||  (intentRequest.Intent.Slots["Versicherungsprodukt"].Value == null)
-                                        ||  (intentRequest.Intent.Slots["Versicherungsprodukt"].Equals(new KeyValuePair<string, object>()))
-                                        ||  (!this.checkVersicherungsprodukt(intentRequest.Intent.Slots["Versicherungsprodukt"].Value.ToLower())))
+                                    if ((!intentRequest.Intent.Slots.ContainsKey("Versicherungsprodukt"))
+                                        || (intentRequest.Intent.Slots["Versicherungsprodukt"].Value == null)
+                                        || (intentRequest.Intent.Slots["Versicherungsprodukt"].Equals(new KeyValuePair<string, object>()))
+                                        || (!this.checkVersicherungsprodukt(intentRequest.Intent.Slots["Versicherungsprodukt"].Value.ToLower())))
                                     {
                                         log.LogLine($"GetVersicherungsprodukt sent");
                                         response = this.HandleGetVersicherungsprodukteIntent(gesellschaft, response);
@@ -615,7 +615,7 @@ namespace AlexaSkillCSharp
                                     {
                                         Text = $"Ok, ich habe dir eine Email mit weitergehenden Informationen über {versicherungsprodukt} gesendet.{messageRessource.StopMessage}"
                                     });
-                                    response.Response.ShouldEndSession = true;
+                                    //response.Response.ShouldEndSession = true;
                                 }
                                 else if ((STATES)lastIntent.Value == STATES.GetStammdatenAendern)
                                 {
@@ -853,24 +853,28 @@ namespace AlexaSkillCSharp
 
         public void sendingMail(string inhalt)
         {
-            //string htmlBody = @"<html>
-            //                            <head></head>
-            //                            <body>
-            //                              <p>Diese Email informiert Sie über
-            //                               #Inhalt#
-            //                               <br>Weitergehende Informationen bekommen Sie auf der Website des Konzerns:</br>
-            //                              <br><a href='http://www.hallesche.de/'> Hallesche</a> </br>
-            //                              <br><a href='http://www.alte-leipziger.de/'> Alte Leipziger</a> </br>  
-            //                             </p>
-            //                            </ body >
-            //                            </ html > ";
+            log.LogLine($"sendingMail Inhalt: {inhalt}");
+            // The HTML body of the email.<h1>Amazon SES Test (AWS SDK for .NET)</h1>
+            string htmlBody = @"<html>
+                                        <head></head>
+                                        <body>
+                                          <p>Diese Email informiert Sie über
+                                           #Inhalt#
+                                           <br>Weitergehende Informationen bekommen Sie auf der Website des Konzerns:</br>
+                                          <br><a href='http://www.hallesche.de/'> Hallesche</a> </br>
+                                          <br><a href='http://www.alte-leipziger.de/'> Alte Leipziger</a> </br>  
+                                         </p>
+                                        </ body >
+                                        </ html > ";
 
             if (telefonnummer != "" || versicherungsprodukt != "")
             {
+                log.LogLine($"If-Fall Inhalt: {inhalt}");
                 htmlBody = htmlBody.Replace("#Inhalt#", inhalt);
             }
             else
             {
+                log.LogLine($"Else-Fall Inhalt: {inhalt}");
                 htmlBody = htmlBody.Replace("#Inhalt#", "");
             }
 
@@ -912,6 +916,7 @@ namespace AlexaSkillCSharp
                 try
                 {
                     log.LogLine("Sending email using Amazon SES...");
+                    log.LogLine($"Else-Fall Inhalt: {sendRequest.Message.Body.Html}");
                     var response = client.SendEmailAsync(sendRequest);
                     response.Wait();
                     log.LogLine("The email was sent successfully.");
@@ -931,23 +936,23 @@ namespace AlexaSkillCSharp
     }
 
     public class MessageRessource
-        {
-            //Standard-Phrasen
-            public string SkillName { get; set; }
-            public string HelpMessage { get; set; }
-            public string HelpReprompt { get; set; }
-            public string StopMessage { get; set; }
-            public string WelcomeMessage { get; set; }
-            public string UnhandledMessage { get; set; }
+    {
+        //Standard-Phrasen
+        public string SkillName { get; set; }
+        public string HelpMessage { get; set; }
+        public string HelpReprompt { get; set; }
+        public string StopMessage { get; set; }
+        public string WelcomeMessage { get; set; }
+        public string UnhandledMessage { get; set; }
 
-            //Phrasen
-            public string AllgemeineInformationenAlteLeipziger { get; set; }
-            public string AllgemeineInformationenHallesche { get; set; }
-            public string AllgemeineInformationenKonzern { get; set; }
-            public string VersicherungsprodukteAlteLeipziger { get; set; }
-            public string VersicherungsprodukteHallesche { get; set; }
-            public string VersicherungsprodukteKonzern { get; set; }
-        }
+        //Phrasen
+        public string AllgemeineInformationenAlteLeipziger { get; set; }
+        public string AllgemeineInformationenHallesche { get; set; }
+        public string AllgemeineInformationenKonzern { get; set; }
+        public string VersicherungsprodukteAlteLeipziger { get; set; }
+        public string VersicherungsprodukteHallesche { get; set; }
+        public string VersicherungsprodukteKonzern { get; set; }
+    }
 }
 
 
