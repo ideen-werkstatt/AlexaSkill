@@ -147,9 +147,9 @@ namespace AlexaSkillCSharp
             messageRessource.AllgemeineInformationenAlteLeipziger = $"Allgemeine Informationen zur Alten Leipziger Lebensversicherung. {messageRessource.StopMessage}";
             messageRessource.AllgemeineInformationenHallesche = $"Allgemeine Informationen zur Halleschen Krankenversicherung. {messageRessource.StopMessage}";
             messageRessource.AllgemeineInformationenKonzern = $"Allgemeine Informationen zum Alten Leipziger Halleschen Konzern. {messageRessource.StopMessage}";
-            messageRessource.VersicherungsprodukteAlteLeipziger = "Informationen über Versicherungsprodukte der Alten Leipziger Lebensversicherung. Versicherungsprodukt?";
-            messageRessource.VersicherungsprodukteHallesche = "Informationen über Versicherungsprodukte der Halleschen Krankenversicherung. Versicherungsprodukt?";
-            messageRessource.VersicherungsprodukteKonzern = "Informationen über Versicherungsprodukte des gesamten Konzerns. Versicherungsprodukt?";
+            messageRessource.VersicherungsprodukteAlteLeipziger = "Die Alte Leipziger Lebensversicherung bietet beispielsweise Fondsrenten und Berufunfähigkeitsversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!";
+            messageRessource.VersicherungsprodukteHallesche = "Die Hallesche Krankenversicherung bietet beispielsweise private Krankenversicherungen und Pflegezusatzversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!?";
+            messageRessource.VersicherungsprodukteKonzern = "Der Alte Leipziger Hallesche Konzern bietet beispielsweise Fondsrenten, Berufunfähigkeitsversicherungen, private Krankenversicherung und Pflegezusatzversicherungen an. Möchtest du nähere Informationen zu einem genannten Versicherungsprodukt erhalten? Falls ja, nenne mir einfach den Namen!?";
         }
 
         /// <summary>
