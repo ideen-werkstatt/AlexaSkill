@@ -26,11 +26,11 @@ namespace AlexaSkillCSharp
 
         // Replace sender@example.com with your "From" address.
         // This address must be verified with Amazon SES.
-        static readonly string senderAddress = "stefanroehrig@gmx.de";
+        static readonly string senderAddress = "Ideen-Werkstatt@hallesche.de";
 
         // Replace recipient@example.com with a "To" address. If your account
         // is still in the sandbox, this address must be verified.
-        static readonly string receiverAddress = "kdmytrok@gmail.com";
+        static readonly string receiverAddress = "Ideen-Werkstatt@hallesche.de";
 
         // The configuration set to use for this email. If you do not want to use a
         // configuration set, comment out the following property and the
